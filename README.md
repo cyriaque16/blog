@@ -15,13 +15,13 @@ Ensuite dans le dossier blog-master:
 2) Nous allons maintenant corriger deux erreurs qui sont dans le vendor.
 2) blog-master\vendor\ed\blog-bundle\Security\Authorization\Voter\ArticleVoter.php LIGNE 48
 
-avant        
-		catch(\Exception $e)
+
+        }
+        catch(\Exception $e)
         {
             return false;
         }
-
-après
+to
 
 
         catch(\Exception $e)
@@ -33,6 +33,9 @@ après
             return false;
         }
 
-3) blog-master\vendor\ed\blog-bundle\Resources\views\Comment\comment.html.twig 
-   - ligne 3 avant changement : <div id="{{ comment.id|encrypt }}" class="col-sm-3 margin--t">
-   - ligne 3 après changement : <div id="{{ comment.id }}" class="col-sm-3 margin--t">
+3) blog-master\vendor\ed\blog-bundle\Resources\views\Comment\comment.html.twig LIGNE 3
+    "<div id="{{ comment.id|encrypt }}" class="col-sm-3 margin--t">"
+   
+to
+   
+   "<div id="{{ comment.id }}" class="col-sm-3 margin--t">"
