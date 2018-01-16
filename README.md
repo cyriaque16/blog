@@ -1,69 +1,38 @@
-Symfony Standard Edition
-========================
+SYMFONY 2.8 BLOG PITAULT CYRIAQUE
+=================================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Blog réalisé grâce au bundle EDBLOGBUNDLE https://github.com/EtonDigital/EDBlogBundle
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Installation:
+============
 
-What's inside?
---------------
+1) Clôner le repository
+2) Importer le fichier de la base de donnée "symfony.sql" dans votre gestionnaire de base de données
 
-The Symfony Standard Edition is configured with the following defaults:
+Ensuite dans le dossier blog-master:
+----------------------------------
+1) composer install.
+2) Nous allons maintenant corriger deux erreurs qui sont dans le vendor.
+2) blog-master\vendor\ed\blog-bundle\Security\Authorization\Voter\ArticleVoter.php LIGNE 48
 
-  * An AppBundle you can use to start coding;
+avant        
+		catch(\Exception $e)
+        {
+            return false;
+        }
 
-  * Twig as the only configured template engine;
+après
 
-  * Doctrine ORM/DBAL;
 
-  * Swiftmailer;
+        catch(\Exception $e)
+        {
+            return false;
+        }
+        catch(\Error $e)
+        {
+            return false;
+        }
 
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.8/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.8/doctrine.html
-[8]:  https://symfony.com/doc/2.8/templating.html
-[9]:  https://symfony.com/doc/2.8/security.html
-[10]: https://symfony.com/doc/2.8/email.html
-[11]: https://symfony.com/doc/2.8/logging.html
-[12]: https://symfony.com/doc/2.8/assetic/asset_management.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
+3) blog-master\vendor\ed\blog-bundle\Resources\views\Comment\comment.html.twig 
+   - ligne 3 avant changement : <div id="{{ comment.id|encrypt }}" class="col-sm-3 margin--t">
+   - ligne 3 après changement : <div id="{{ comment.id }}" class="col-sm-3 margin--t">
