@@ -33,9 +33,13 @@ to
             return false;
         }
 
+
 3) blog-master\vendor\ed\blog-bundle\Resources\views\Comment\comment.html.twig LIGNE 3
-    "<div id="{{ comment.id|encrypt }}" class="col-sm-3 margin--t">"
+    * {{ comment.id|encrypt }}
    
 to
    
-   "<div id="{{ comment.id }}" class="col-sm-3 margin--t">"
+    * {{ comment.id }}
+
+4) lancer le serveur : php app/console server:run
+5) utilisateur pseudo : admin   mdp: admin
